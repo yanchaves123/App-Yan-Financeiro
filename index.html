@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Yan Financeiro</title>
+    <meta name="description" content="Plataforma completa de controle financeiro pessoal e profissional com gestão de receitas, despesas, cartões, projetos, clientes e inteligência artificial." />
+    <meta property="og:title" content="Yan Financeiro" />
+    <meta property="og:description" content="Plataforma completa de controle financeiro pessoal e profissional com gestão de receitas, despesas, cartões, projetos, clientes e inteligência artificial." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Financeiro" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Diagnose module-import failures (which React error boundaries cannot catch).
+      window.addEventListener('error', function (event) {
+        var root = document.getElementById('root');
+        if (root && !root.hasChildNodes()) {
+          root.innerHTML = '<main style="min-height:100vh;background:#0f172a;color:white;padding:32px;font:16px system-ui"><h1>Falha ao carregar o Yan Financeiro</h1><p>O navegador não conseguiu iniciar o aplicativo. Verifique o Console (F12) e envie o erro.</p></main>';
+        }
+      });
+      window.setTimeout(function () {
+        var root = document.getElementById('root');
+        if (root && !root.hasChildNodes()) {
+          root.innerHTML = '<main style="min-height:100vh;background:#0f172a;color:white;padding:32px;font:16px system-ui"><h1>O Yan Financeiro não iniciou</h1><p>Confira se a implantação publicou todos os arquivos do projeto. Abra F12 → Console para ver o erro.</p></main>';
+        }
+      }, 10000);
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,252 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile for Yan Financeiro",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 150 },
+        "profession": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "email"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Financial accounts and bank balances",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "maxLength": 50 },
+        "initialBalance": { "type": "number" },
+        "institution": { "type": "string", "maxLength": 100 },
+        "color": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "name", "type"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Expense and income categories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "maxLength": 50 },
+        "color": { "type": "string", "maxLength": 30 },
+        "icon": { "type": "string", "maxLength": 50 },
+        "isDefault": { "type": "boolean" }
+      },
+      "required": ["id", "name", "type"]
+    },
+    "CreditCard": {
+      "title": "CreditCard",
+      "description": "Credit card configurations and billing cycle",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "institution": { "type": "string", "maxLength": 100 },
+        "limit": { "type": "number" },
+        "closingDay": { "type": "number" },
+        "dueDay": { "type": "number" },
+        "color": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "name", "limit", "closingDay", "dueDay"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "Client registry for videographers and service providers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "company": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 150 },
+        "city": { "type": "string", "maxLength": 100 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "name"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Audiovisual and service projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "clientId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "totalValue": { "type": "number" },
+        "projectDate": { "type": "string", "maxLength": 64 },
+        "paymentDeadline": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 50 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "receivedValue": { "type": "number" },
+        "pendingValue": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "clientId", "name", "totalValue"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial income and expense records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 200 },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "maxLength": 64 },
+        "categoryId": { "type": "string", "maxLength": 128 },
+        "accountId": { "type": "string", "maxLength": 128 },
+        "destinationAccountId": { "type": "string", "maxLength": 128 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "creditCardId": { "type": "string", "maxLength": 128 },
+        "clientId": { "type": "string", "maxLength": 128 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "maxLength": 50 },
+        "isRecurring": { "type": "boolean" },
+        "recurrenceId": { "type": "string", "maxLength": 128 },
+        "installmentCurrent": { "type": "number" },
+        "installmentTotal": { "type": "number" },
+        "parentPurchaseId": { "type": "string", "maxLength": 128 },
+        "isDemo": { "type": "boolean" },
+        "observations": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "type", "description", "amount", "date", "categoryId", "status"]
+    },
+    "RecurringTransaction": {
+      "title": "RecurringTransaction",
+      "description": "Recurring income or expense subscription",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 200 },
+        "amount": { "type": "number" },
+        "periodicity": { "type": "string", "maxLength": 50 },
+        "dueDay": { "type": "number" },
+        "categoryId": { "type": "string", "maxLength": 128 },
+        "accountId": { "type": "string", "maxLength": 128 },
+        "creditCardId": { "type": "string", "maxLength": 128 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "clientId": { "type": "string", "maxLength": 128 },
+        "startDate": { "type": "string", "maxLength": 64 },
+        "endDate": { "type": "string", "maxLength": 64 },
+        "active": { "type": "boolean" },
+        "isDemo": { "type": "boolean" },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "type", "description", "amount", "periodicity", "dueDay", "categoryId"]
+    },
+    "Goal": {
+      "title": "Goal",
+      "description": "Financial savings goal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "targetValue": { "type": "number" },
+        "currentValue": { "type": "number" },
+        "deadline": { "type": "string", "maxLength": 64 },
+        "linkedAccountId": { "type": "string", "maxLength": 128 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "isDemo": { "type": "boolean" },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "name", "targetValue", "currentValue", "deadline"]
+    },
+    "InAppNotification": {
+      "title": "InAppNotification",
+      "description": "System and reminder notifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 150 },
+        "message": { "type": "string", "maxLength": 500 },
+        "type": { "type": "string", "maxLength": 50 },
+        "date": { "type": "string", "maxLength": 64 },
+        "read": { "type": "boolean" },
+        "linkTab": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "userId", "title", "message", "type", "date", "read"]
+    },
+    "ReminderSettings": {
+      "title": "ReminderSettings",
+      "description": "Scheduled reminder configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "enabled": { "type": "boolean" },
+        "soundEnabled": { "type": "boolean" },
+        "vibrateEnabled": { "type": "boolean" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "enabled"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Bank and wallet accounts"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Income and expense categories"
+    },
+    "/creditCards/{cardId}": {
+      "schema": "CreditCard",
+      "description": "Credit cards"
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Client roster"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Audiovisual projects"
+    },
+    "/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Transactions history"
+    },
+    "/recurring/{recurringId}": {
+      "schema": "RecurringTransaction",
+      "description": "Recurring entries"
+    },
+    "/goals/{goalId}": {
+      "schema": "Goal",
+      "description": "Financial goals"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "InAppNotification",
+      "description": "In-app notifications"
+    },
+    "/settings/{settingId}": {
+      "schema": "ReminderSettings",
+      "description": "Global user settings"
+    }
+  }
+}

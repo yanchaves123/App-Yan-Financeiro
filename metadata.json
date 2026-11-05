@@ -1,0 +1,6 @@
+{
+  "name": "Financeiro Pro",
+  "description": "Plataforma completa de controle financeiro pessoal e profissional com gestão de receitas, despesas, cartões, projetos, clientes e inteligência artificial.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

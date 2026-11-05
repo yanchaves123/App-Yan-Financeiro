@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null && request.auth.token.email_verified == true; }
+    function isOwner(ownerId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(ownerId))
+        && get(/databases/$(database)/documents/users/$(ownerId)).data.firebaseUid == request.auth.uid;
+    }
+    match /users/{userId} {
+      allow get: if signedIn() && (!exists(/databases/$(database)/documents/users/$(userId)) || resource.data.firebaseUid == request.auth.uid);
+      allow list: if false;
+      allow create: if signedIn()
+        && request.resource.data.id == userId
+        && request.resource.data.firebaseUid == request.auth.uid
+        && request.resource.data.email == request.auth.token.email;
+      allow update: if signedIn()
+        && resource.data.firebaseUid == request.auth.uid
+        && request.resource.data.firebaseUid == resource.data.firebaseUid
+        && request.resource.data.email == resource.data.email;
+      allow delete: if false;
+    }
+    match /{coll}/{itemId} {
+      allow get, list, delete: if coll in ['accounts','categories','creditCards','clients','projects','transactions','recurring','goals','notifications','settings']
+        && isOwner(resource.data.userId);
+      allow create: if coll in ['accounts','categories','creditCards','clients','projects','transactions','recurring','goals','notifications','settings']
+        && request.resource.data.id == itemId
+        && isOwner(request.resource.data.userId);
+      allow update: if coll in ['accounts','categories','creditCards','clients','projects','transactions','recurring','goals','notifications','settings']
+        && isOwner(resource.data.userId)
+        && request.resource.data.userId == resource.data.userId;
+    }
+  }
+}
